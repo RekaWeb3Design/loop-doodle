@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Loop Doodle</title>
+<meta name="description" content="Draw a squiggle, get a banger. Loop Doodle turns anything you draw into a looping tune over a beat. Free, open source, no sign-up.">
+<meta name="theme-color" content="#0f0c1d">
+<meta property="og:title" content="Loop Doodle">
+<meta property="og:description" content="Draw a squiggle, get a banger. Loop Doodle turns anything you draw into a looping tune over a beat. Free, open source, no sign-up.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<!-- ================= LANDING ================= -->
+<div class="landing">
+  <nav class="nav">
+    <a class="brand" href="#home">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#231d45"/><path d="M6 21c3-10 6-10 8-3s5 7 7 0 4-8 7-3" fill="none" stroke="#ffd84d" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="9" r="2.5" fill="#a8ff3e"/></svg>
+      <b>Loop<span>Doodle</span></b>
+    </a>
+    <a class="btn sm" href="#play">Open the app</a>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <span class="tag">A toy for making tunes</span>
+      <h1 class="mega">Draw a <span class="a">squiggle.</span><br>Get a <span class="b">banger.</span></h1>
+      <p class="lede">Loop Doodle turns anything you draw into a looping tune. No notes to learn, no theory, no wrong answers. Draw a house, a cat or your signature and hear what it sounds like.</p>
+      <div class="cta">
+        <a class="btn" href="#play">Start doodling</a>
+        <button class="btn ghost" id="toGuide">What do the buttons do?</button>
+      </div>
+    </div>
+    <div class="demo">
+      <span class="sticker s1">Draw on me</span>
+      <span class="sticker s2">Zero wrong notes</span>
+      <div class="mini"><canvas id="heroPad" aria-label="Demo pad. Draw a line to hear it."></canvas></div>
+      <div class="mbar">
+        <button class="btn sm white" id="heroPlay" aria-pressed="false"><span class="ico"></span><span>Play</span></button>
+        <div class="dots" id="heroDots"></div>
+        <button class="link" id="heroClear">Clear</button>
+        <span class="sp"></span>
+        <button class="link" id="heroOpen">Open this in the app &rarr;</button>
+      </div>
+      <p class="cap">Try it right here. Pick a colour, draw on the pad and let go.</p>
+    </div>
+  </section>
+
+  <div class="marq" aria-hidden="true"><div>
+    <span>Scribble like a toddler &#10022; Draw a little house &#10022; Draw a flower &#10022; Check how it sounds &#10022; Sign your name &#10022; Draw a cat &#10022;</span>
+    <span>Scribble like a toddler &#10022; Draw a little house &#10022; Draw a flower &#10022; Check how it sounds &#10022; Sign your name &#10022; Draw a cat &#10022;</span>
+  </div></div>
+
+  <section>
+    <h2 class="h2">Three steps. That is the whole manual.</h2>
+    <p class="sub">You are not composing. You are doodling, and the pad does the music part.</p>
+    <ol class="steps">
+      <li style="--c: var(--keys)"><i>1</i><div><h3>Draw anything</h3><p>Drag across the pad. Left to right is time, higher up is a higher note.</p></div></li>
+      <li style="--c: var(--bass)"><i>2</i><div><h3>Pick a beat</h3><p>Choose the drums that play under your drawing, from sleepy lo-fi to DnB.</p></div></li>
+      <li style="--c: var(--lead)"><i>3</i><div><h3>Hit play</h3><p>It loops forever. Keep drawing, erasing and swapping sounds while it plays.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="groove">
+    <div>
+      <h2 class="h2">Same doodle, different groove.</h2>
+      <p class="sub" style="margin-bottom: 0">Pick a drawing, then tap through the beat styles. The lines stay the same. Only the drums and the tempo change.</p>
+      <div class="plab">Drawing</div>
+      <div class="pills" id="shapePills"></div>
+      <div class="plab">Beat style</div>
+      <div class="pills bt" id="beatPills"></div>
+    </div>
+    <div class="demo">
+      <div class="mini" style="box-shadow: 8px 8px 0 var(--bass)"><canvas id="groovePad" aria-label="Demo pad with a ready-made drawing."></canvas></div>
+      <div class="mbar">
+        <button class="btn sm white" id="groovePlay" aria-pressed="false"><span class="ico"></span><span>Play</span></button>
+        <span class="sp"></span>
+        <button class="link" id="grooveOpen">Remix this in the app &rarr;</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="guide">
+    <h2 class="h2">What every button does.</h2>
+    <p class="sub">You can ignore all of it and just draw. But if you are curious, here is the whole control panel.</p>
+    <div class="guide" id="guideCards"></div>
+  </section>
+
+  <section>
+    <span class="tag" style="background: var(--bells)">Open source</span>
+    <h2 class="h2" style="margin-top: 16px">Free to play. Free to take apart.</h2>
+    <p class="sub">Loop Doodle is an open source project. All of the code is public under the MIT licence, so you can read it, fork it, break it and build your own version.</p>
+    <a class="btn ghost" href="https://github.com/RekaWeb3Design/loop-doodle" target="_blank" rel="noopener">See the code on GitHub</a>
+  </section>
+
+  <section class="end">
+    <h2 class="mega">Now go <span class="a">scribble.</span></h2>
+    <a class="btn" href="#play">Open Loop Doodle</a>
+    <p class="fine">The sound is made live in your browser, nothing is recorded or uploaded. On an iPhone, flip the silent switch off or you will hear nothing.</p>
+    <p class="flinks"><span>&copy; 2026 Víg Réka</span><a href="#legal">Privacy and terms</a><a href="#legal">Adatkezelés és feltételek</a><a href="https://github.com/RekaWeb3Design/loop-doodle" target="_blank" rel="noopener">GitHub</a></p>
+  </section>
+</div>
+
+<!-- ================= LEGAL ================= -->
+<div class="legalv">
+  <nav class="nav">
+    <a class="brand" href="#home">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#231d45"/><path d="M6 21c3-10 6-10 8-3s5 7 7 0 4-8 7-3" fill="none" stroke="#ffd84d" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="9" r="2.5" fill="#a8ff3e"/></svg>
+      <b>Loop<span>Doodle</span></b>
+    </a>
+    <a class="btn sm" href="#play">Open the app</a>
+  </nav>
+  <div class="langs">
+    <button class="pill" id="lgEn" aria-pressed="true">English</button>
+    <button class="pill" id="lgHu" aria-pressed="false">Magyar</button>
+  </div>
+
+  <article id="legalEn" lang="en">
+    <h1>Privacy and terms</h1>
+    <p class="when">Last updated: 12 November 2026</p>
+    <div class="short"><p><strong>The short version:</strong> Loop Doodle has no accounts, no cookies, no analytics and no ads. Your doodles stay in your own browser and we never see them.</p></div>
+
+    <h2>Who runs this site</h2>
+    <p>Víg Réka e.v. (sole proprietor), Budapest, Hungary. For anything about this site or your data, write to <span class="sel">hello@rekavig.com</span>.</p>
+
+    <h2>Privacy</h2>
+    <h3>Your doodles and settings</h3>
+    <p>Your drawing and your settings (sound, beat style, tempo, key and scale) are saved in your browser's local storage, so they are still there the next time you open the page. They never leave your device and we cannot see them. To remove them, press Clear in the app or clear this site's data in your browser settings.</p>
+    <h3>Technical data when the page loads</h3>
+    <p>The site is hosted by Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA). To deliver the page and keep it secure, Cloudflare processes your IP address and basic request details such as the time of the request and your browser type. The legal basis is our legitimate interest in running a working, secure website (GDPR Article 6(1)(f)). Cloudflare acts as our data processor and may process this data outside the European Economic Area under the safeguards set out in its Data Processing Addendum. We keep no logs of our own.</p>
+    <h3>What we do not do</h3>
+    <ul>
+      <li>No cookies, no tracking, no analytics, no advertising.</li>
+      <li>No accounts, sign-ups or forms.</li>
+      <li>No microphone or camera access. All sound is generated on your device.</li>
+      <li>No third-party fonts or scripts. Everything loads from this site.</li>
+    </ul>
+    <h3>Your rights</h3>
+    <p>Under the GDPR you can ask for access to your personal data, for it to be corrected, erased or restricted, and you can object to its processing. Write to the address above. Because this site keeps nothing that identifies you, in most cases there will be nothing for us to look up. You can also complain to the Hungarian data protection authority: Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH), 1055 Budapest, Falk Miksa utca 9-11., naih.hu.</p>
+    <h3>Children</h3>
+    <p>The site collects nothing from anyone, so it is fine to use at any age.</p>
+
+    <h2>Terms of use</h2>
+    <ul>
+      <li>Loop Doodle is a free toy, made for fun and offered as it is. We do not promise it will always be available or free of bugs.</li>
+      <li>Sound can be loud. Start with your volume low, especially on headphones.</li>
+      <li>Whatever you draw is yours.</li>
+      <li>The code is open source under the MIT licence and lives at github.com/RekaWeb3Design/loop-doodle. The Loop Doodle name and logo stay with the operator.</li>
+      <li>Nothing here limits rights you have under mandatory consumer protection law. Hungarian law applies.</li>
+    </ul>
+
+    <h2>Credits</h2>
+    <p>Typefaces: Unbounded, Space Grotesk and JetBrains Mono, each used under the SIL Open Font License 1.1. The licence texts are published with the site in the fonts folder.</p>
+  </article>
+
+  <article id="legalHu" lang="hu" hidden>
+    <h1>Adatkezelés és feltételek</h1>
+    <p class="when">Utolsó frissítés: 2026. november 12.</p>
+    <div class="short"><p><strong>Röviden:</strong> a Loop Doodle-ben nincs fiók, nincs süti, nincs analitika és nincs hirdetés. A rajzaid a saját böngésződben maradnak, mi nem látjuk őket.</p></div>
+
+    <h2>Ki üzemelteti az oldalt</h2>
+    <p>Víg Réka e.v. (egyéni vállalkozó), Budapest, Magyarország. Az oldallal vagy az adataiddal kapcsolatban itt érsz el: <span class="sel">hello@rekavig.com</span>.</p>
+
+    <h2>Adatkezelés</h2>
+    <h3>A rajzaid és a beállításaid</h3>
+    <p>A rajzodat és a beállításaidat (hangszín, beat stílus, tempó, hangnem és skála) a böngésződ helyi tárolója őrzi meg, hogy a következő megnyitáskor is meglegyenek. Ezek nem hagyják el az eszközödet, mi nem férünk hozzájuk. Törölni az appban a Clear gombbal tudod, vagy a böngésző beállításaiban az oldal adatainak törlésével.</p>
+    <h3>Technikai adatok az oldal betöltésekor</h3>
+    <p>Az oldal tárhelyszolgáltatója a Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA). Az oldal kiszolgálásához és védelméhez a Cloudflare kezeli az IP-címedet és a kérés alapadatait, például az időpontját és a böngésződ típusát. Az adatkezelés jogalapja a működő, biztonságos weboldal üzemeltetéséhez fűződő jogos érdekünk (GDPR 6. cikk (1) bekezdés f) pont). A Cloudflare adatfeldolgozóként jár el, és az adatokat az Európai Gazdasági Térségen kívül is kezelheti az adatfeldolgozási megállapodásában (Data Processing Addendum) rögzített garanciák mellett. Saját naplót nem vezetünk.</p>
+    <h3>Amit nem csinálunk</h3>
+    <ul>
+      <li>Nincs süti, követés, analitika és hirdetés.</li>
+      <li>Nincs fiók, regisztráció és űrlap.</li>
+      <li>Nem kérünk hozzáférést a mikrofonhoz vagy a kamerához. Minden hang a te eszközödön keletkezik.</li>
+      <li>Nincs külső betűtípus vagy szkript. Minden erről az oldalról töltődik be.</li>
+    </ul>
+    <h3>A jogaid</h3>
+    <p>A GDPR alapján kérheted a személyes adataidhoz való hozzáférést, azok helyesbítését, törlését vagy kezelésének korlátozását, és tiltakozhatsz az adatkezelés ellen. Ehhez írj a fenti címre. Mivel az oldal semmit nem tárol, ami téged azonosítana, a legtöbb esetben nem lesz mit kikeresnünk. Panasszal a Nemzeti Adatvédelmi és Információszabadság Hatósághoz (NAIH) fordulhatsz: 1055 Budapest, Falk Miksa utca 9-11., naih.hu.</p>
+    <h3>Gyerekek</h3>
+    <p>Az oldal senkitől nem gyűjt adatot, ezért bármilyen életkorban használható.</p>
+
+    <h2>Felhasználási feltételek</h2>
+    <ul>
+      <li>A Loop Doodle ingyenes játék, szórakozásból készült, és úgy használható, ahogy van. Nem vállalunk garanciát arra, hogy mindig elérhető és hibátlan lesz.</li>
+      <li>A hang hangos lehet. Halk hangerővel kezdj, főleg fejhallgatóval.</li>
+      <li>Amit rajzolsz, az a tiéd.</li>
+      <li>A kód nyílt forráskódú, MIT licenc alatt érhető el itt: github.com/RekaWeb3Design/loop-doodle. A Loop Doodle név és logó az üzemeltetőé marad.</li>
+      <li>Az itt leírtak nem korlátozzák a kötelező fogyasztóvédelmi szabályok szerinti jogaidat. A magyar jog az irányadó.</li>
+    </ul>
+
+    <h2>Köszönet</h2>
+    <p>Betűtípusok: Unbounded, Space Grotesk és JetBrains Mono, mindegyik a SIL Open Font License 1.1 alapján. A licencszövegek az oldallal együtt, a fonts mappában érhetők el.</p>
+  </article>
+</div>
+
+<!-- ================= APP ================= -->
+<div class="app">
+  <header class="top">
+    <a class="brand" href="#home" aria-label="Loop Doodle, back to the start page">
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#231d45"/><path d="M6 21c3-10 6-10 8-3s5 7 7 0 4-8 7-3" fill="none" stroke="#ffd84d" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="9" r="2.5" fill="#a8ff3e"/></svg>
+      <b>Loop<span>Doodle</span></b>
+    </a>
+    <p class="hint">Draw a line and it becomes a melody. Left to right is time, higher on the pad is a higher note.</p>
+    <div class="right">
+      <button class="help" id="helpBtn" aria-label="How it works">?</button>
+      <button class="btn sm white" id="play" aria-pressed="false"><span class="ico"></span><span>Play</span></button>
+    </div>
+  </header>
+
+  <main class="stage" id="stage"><canvas id="pad" aria-label="Sketch pad. Draw lines to make notes."></canvas>
+    <button class="float" id="cleanBtn">Clean space</button>
+    <div class="cbar">
+      <div id="dots"></div>
+      <div>
+        <button class="cb" id="cPlay" aria-label="Play or stop" aria-pressed="false">&#9654;</button>
+        <button class="cb" id="cUndo" aria-label="Undo">&#8630;</button>
+        <button class="cb" id="cErase" aria-label="Erase" aria-pressed="false">&#9003;</button>
+        <button class="cb" id="cWipe" aria-label="Clear the pad">&#10227;</button>
+        <button class="cb" id="cExit" aria-label="Leave clean space">&#10005;</button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="deck">
+    <div class="grp">
+      <div class="lbl"><span>Sound</span></div>
+      <div class="row five" id="chips"></div>
+    </div>
+    <div class="grp">
+      <div class="lbl"><span>Tools</span></div>
+      <div class="row five">
+        <button class="tool" id="tDraw" aria-pressed="true">Draw</button>
+        <button class="tool" id="tErase" aria-pressed="false">Erase</button>
+        <button class="tool" id="tUndo">Undo</button>
+        <button class="tool" id="tClear">Clear</button>
+        <button class="tool" id="tDice">Shuffle</button>
+      </div>
+    </div>
+    <div class="grp">
+      <div class="lbl"><span>Beat style</span></div>
+      <div class="row four" id="beats"></div>
+    </div>
+    <div class="row two">
+      <div class="grp">
+        <label class="lbl" for="bpm"><span>Tempo</span><b><span id="bpmOut">78</span> bpm</b></label>
+        <input type="range" id="bpm" min="60" max="180" step="1" value="78">
+      </div>
+      <div class="grp">
+        <label class="lbl" for="bvol"><span>Beat level</span><b id="bvolOut">70%</b></label>
+        <input type="range" id="bvol" min="0" max="100" step="1" value="70">
+      </div>
+    </div>
+    <div class="row two">
+      <div class="grp">
+        <label class="lbl" for="root"><span>Key</span></label>
+        <select id="root"></select>
+      </div>
+      <div class="grp">
+        <label class="lbl" for="scale"><span>Scale</span></label>
+        <select id="scale"></select>
+      </div>
+    </div>
+    <p class="foot">Every line snaps to the scale, so nothing sounds wrong. Not sure what something does? Tap the <kbd>?</kbd> at the top. <kbd>Space</kbd> plays and stops. <a href="#legal">Privacy and terms</a></p>
+  </aside>
+</div>
+
+<div class="sheet" id="sheet" hidden>
+  <div class="sheet-in" role="dialog" aria-labelledby="sheetT">
+    <header><h2 id="sheetT">How Loop Doodle works</h2><button class="cb" id="sheetX" aria-label="Close">&#10005;</button></header>
+    <p>Just draw. You cannot break anything, and every line turns into notes that fit together.</p>
+    <dl id="guideList"></dl>
+    <button class="btn sm" id="sheetOk">Got it, let me draw</button>
+  </div>
+</div>
+<script src="app.js" defer></script>
+</body>
+</html>
