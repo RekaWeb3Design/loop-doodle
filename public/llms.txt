@@ -1,0 +1,21 @@
+# Loop Doodle
+
+> Loop Doodle is a free, open source browser toy that turns your drawings into looping music. There is no sign-up and nothing to install, and it works on phones, tablets and computers.
+
+Loop Doodle is made by Réka Víg, the founder of The WOW Studio. It was built for fun.
+
+## Key facts
+
+- What it does: you draw lines on a pad, each line becomes a melody that snaps to a musical scale, and a drum beat plays underneath. The result loops.
+- Price: free. No ads, no sign-up, no accounts.
+- Where it runs: in the browser, on phones, tablets and computers. It needs JavaScript and a modern browser. Nothing to install.
+- Sounds and beats: five instruments (Keys, Bass, Lead, Pad, Bells) and seven beat styles (Lo-fi, Boom bap, House, Techno, Trap, DnB, Dembow), with tempo, key and scale controls.
+- Privacy: no cookies, no analytics, no advertising. The sound is generated on the device. The drawing and settings are saved only in the browser's local storage and are never uploaded.
+- Licence: the code is open source under the MIT licence. The Loop Doodle name and logo are not covered by the licence.
+- Languages: the site is in English. The privacy notice and terms are in English and Hungarian.
+
+## Links
+
+- [Loop Doodle](https://loopdoodle.rekavig.com/): the landing page and the app (the app opens at https://loopdoodle.rekavig.com/#play)
+- [Privacy and terms](https://loopdoodle.rekavig.com/privacy): privacy notice and terms of use, English and Hungarian
+- [Source code](https://github.com/RekaWeb3Design/loop-doodle): the full source on GitHub, MIT licence

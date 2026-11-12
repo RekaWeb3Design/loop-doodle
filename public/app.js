@@ -31,17 +31,6 @@ const KITS = {
   hard: {f0: 210, f1: 50, kd: .24, kg: 1.1, sg: .55, hg: 1}, '808': {f0: 130, f1: 0, kd: .8, kg: 1, sg: .5, hg: .9},
 };
 const hit = (p, s) => (p ? p[s % p.length] : '.');
-const GUIDE = [
-  {t: 'The pad', c: 'fg', d: 'Left to right is time: one trip across is two bars, then it loops. Up and down is pitch, so higher on the pad means a higher note. The faint blocks behind your line show the notes it turned into.'},
-  {t: 'Sound', c: 'keys', d: 'Five colours, five instruments: Keys, Bass, Lead, Pad and Bells. Pick one, then draw. Put a few on the same pad and you have a band.'},
-  {t: 'Tools', c: 'bells', d: 'Draw adds lines. Erase removes any line you touch. Undo takes back the last thing, Clear wipes the pad, and Shuffle draws a random doodle for you.'},
-  {t: 'Beat style', c: 'accent', d: 'The drums under your doodle: Lo-fi, Boom bap, House, Techno, Trap, DnB or Dembow. Same drawing, completely different mood. Each style brings its usual tempo. No beat leaves just your lines.'},
-  {t: 'Tempo', c: 'bass', d: 'How fast the loop runs, in beats per minute. 70 to 90 is sleepy, 120 to 135 is dancey, 170 is chaos.'},
-  {t: 'Beat level', c: 'pad', d: 'How loud the drums are next to your doodle. Slide it down to hear the melody, up to make it thump.'},
-  {t: 'Key and scale', c: 'lead', d: 'The set of notes your lines snap to, which is why nothing sounds wrong. Scale sets the mood: minor is moody, major is sunny, Blues and Japanese have their own flavour. Key shifts everything higher or lower.'},
-  {t: 'Clean space', c: 'keys', d: 'Wipes the pad and goes full screen with only the colours and a few buttons. Undo brings the old drawing back. Best on a phone.'},
-];
-
 /* ---------- notes from lines ---------- */
 function rowToMidi(row, cfg) {
   const sc = SCALES[cfg.scale];
@@ -574,13 +563,10 @@ addEventListener('keydown', (e) => {
 });
 
 /* ---------- landing ---------- */
-GUIDE.forEach((it, i) => {
-  const c = document.createElement('article');
-  c.className = 'gc'; c.style.setProperty('--c', `var(--${it.c})`); c.style.setProperty('--rot', ['-1.2deg', '.9deg', '-.6deg', '1.3deg'][i % 4]);
-  c.innerHTML = `<h3>${it.t}</h3><p>${it.d}</p>`;
-  $('guideCards').appendChild(c);
+// the guide text lives once, in the landing page HTML; the help sheet is filled from it
+document.querySelectorAll('#guideCards .gc').forEach((c) => {
   const dt = document.createElement('dt'), dd = document.createElement('dd');
-  dt.textContent = it.t; dt.style.setProperty('--c', `var(--${it.c})`); dd.textContent = it.d;
+  dt.textContent = c.querySelector('h3').textContent; dt.style.setProperty('--c', c.style.getPropertyValue('--c')); dd.textContent = c.querySelector('p').textContent;
   $('guideList').append(dt, dd);
 });
 $('toGuide').onclick = () => $('guide').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
@@ -625,19 +611,15 @@ $('grooveOpen').onclick = () => openInApp(GROOVE);
 /* ---------- views ---------- */
 let view = null;
 function route() {
-  const v = location.hash === '#play' ? 'play' : location.hash === '#legal' ? 'legal' : 'land';
+  if (location.hash === '#legal') { location.replace('/privacy'); return; } // the privacy view moved to its own page
+  const v = location.hash === '#play' ? 'play' : 'land';
   if (v === view) return;
   view = v; stop(); setClean(false); setHelp(false);
-  ['play', 'land', 'legal'].forEach((n) => document.body.classList.toggle(n, v === n));
+  ['play', 'land'].forEach((n) => document.body.classList.toggle(n, v === n));
+  document.querySelector('.app').hidden = v !== 'play'; document.querySelector('.landing').hidden = v !== 'land';
   scrollTo(0, 0); pads.forEach((p) => p.resize());
 }
 addEventListener('hashchange', route);
-const setLang = (hu) => {
-  $('legalHu').hidden = !hu; $('legalEn').hidden = hu;
-  $('lgHu').setAttribute('aria-pressed', hu); $('lgEn').setAttribute('aria-pressed', !hu);
-};
-$('lgEn').onclick = () => setLang(false); $('lgHu').onclick = () => setLang(true);
-setLang((navigator.language || '').toLowerCase().startsWith('hu'));
 
 if (!load()) S.strokes = seed();
 syncAll(); route(); frame();
@@ -668,7 +650,7 @@ syncAll(); route(); frame();
       es.forEach((e) => { if (e.isIntersecting) { const fn = todo.get(e.target); todo.delete(e.target); io.unobserve(e.target); if (fn) fn(); } });
     }, {rootMargin: '0px 0px -10% 0px'});
     const arm = (el, pre, fn) => { el.classList.add(pre); todo.set(el, fn); io.observe(el); };
-    land.querySelectorAll(':scope > section:not(.hero)').forEach((el) => arm(el, 'rv', () => el.classList.add('in')));
+    land.querySelectorAll('main > section:not(.hero)').forEach((el) => arm(el, 'rv', () => el.classList.add('in')));
     land.querySelectorAll('.draw').forEach((el) => arm(el, 'pre', () => el.classList.add('in')));
     land.querySelectorAll('.steps').forEach((el) => arm(el, 'pre', () => { el.classList.add('go'); setTimeout(() => el.classList.remove('pre', 'go'), 1400); }));
     setTimeout(() => { if (!seen) { io.disconnect(); todo.forEach((fn) => fn()); todo.clear(); } }, 1500);

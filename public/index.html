@@ -3,20 +3,123 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Loop Doodle</title>
-<meta name="description" content="Draw a squiggle, get a banger. Loop Doodle turns anything you draw into a looping tune over a beat. Free, open source, no sign-up.">
+<title>Loop Doodle: draw a squiggle, get a looping tune</title>
+<meta name="description" content="Loop Doodle is a free, open source browser toy that turns anything you draw into a looping tune over a beat. No sign-up, works on phones.">
+<link rel="canonical" href="https://loopdoodle.rekavig.com/">
 <meta name="theme-color" content="#0f0c1d">
-<meta property="og:title" content="Loop Doodle">
-<meta property="og:description" content="Draw a squiggle, get a banger. Loop Doodle turns anything you draw into a looping tune over a beat. Free, open source, no sign-up.">
+<meta property="og:site_name" content="Loop Doodle">
 <meta property="og:type" content="website">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css?v=bcc672a">
+<meta property="og:url" content="https://loopdoodle.rekavig.com/">
+<meta property="og:title" content="Loop Doodle: draw a squiggle, get a looping tune">
+<meta property="og:description" content="Loop Doodle is a free, open source browser toy that turns anything you draw into a looping tune over a beat. No sign-up, works on phones.">
+<meta property="og:image" content="https://loopdoodle.rekavig.com/og.png?v=dev">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Loop Doodle. Draw a squiggle, get a banger. A yellow doodle line on a dark music pad.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Loop Doodle: draw a squiggle, get a looping tune">
+<meta name="twitter:description" content="Loop Doodle is a free, open source browser toy that turns anything you draw into a looping tune over a beat. No sign-up, works on phones.">
+<meta name="twitter:image" content="https://loopdoodle.rekavig.com/og.png?v=dev">
+<link rel="icon" href="/favicon.svg?v=dev" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=dev">
+<link rel="preload" href="/fonts/unbounded-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/styles.css?v=dev">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "WebApplication",
+ "name": "Loop Doodle",
+ "url": "https://loopdoodle.rekavig.com/",
+ "description": "Loop Doodle is a free, open source browser toy that turns your drawings into looping music. There is no sign-up and nothing to install, and it works on phones, tablets and computers.",
+ "applicationCategory": "MultimediaApplication",
+ "operatingSystem": "Any",
+ "browserRequirements": "Requires JavaScript and a modern browser.",
+ "isAccessibleForFree": true,
+ "inLanguage": "en",
+ "image": "https://loopdoodle.rekavig.com/og.png",
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "EUR"
+ },
+ "license": "https://opensource.org/licenses/MIT",
+ "author": {
+  "@type": "Person",
+  "name": "Réka Víg"
+ },
+ "sameAs": "https://github.com/RekaWeb3Design/loop-doodle"
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What is Loop Doodle?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Loop Doodle is a free, open source browser toy that turns your drawings into looping music. You draw a line on the pad, it becomes a melody, and a beat plays underneath. I made it for fun."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is it free?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. It costs nothing, there are no ads and you never have to sign up."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Do I need to know anything about music?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Every line you draw snaps to a scale, so the notes always fit together. Left to right is time, and higher up on the pad is a higher note. That is all there is to know."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does it work on my phone?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. It runs in the browser on phones, tablets and computers, and on a touch screen you draw with your finger. It needs JavaScript and a modern browser. If you hear nothing, check that your phone is not on silent."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is my drawing uploaded anywhere?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. The sound is made live in your browser, and your drawing and settings are saved only in your browser's local storage, so they never leave your device. There are no accounts, no cookies and no analytics."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I use the code?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. The code is open source under the MIT licence, so you can read it, fork it and build your own version, as long as you keep the copyright and licence notice. You can find the Loop Doodle code on GitHub. The Loop Doodle name and logo are not covered by the licence."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Who made it?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "I did. I am Réka Víg, the founder of The WOW Studio, and I built Loop Doodle for fun."
+   }
+  }
+ ]
+}
+</script>
 </head>
-<body>
+<body class="land">
 <!-- ================= LANDING ================= -->
 <div class="landing">
-  <nav class="nav">
-    <a class="brand" href="#home" aria-label="Loop Doodle, start page">
+  <header class="nav">
+    <a class="brand" href="#home" aria-label="LoopDoodle, start page">
       <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#231d45"/><path pathLength="1" d="M6 21c3-10 6-10 8-3s5 7 7 0 4-8 7-3" fill="none" stroke="#ffd84d" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="9" r="2.5" fill="#a8ff3e"/></svg>
       <b>Loop<span>Doodle</span></b>
     </a>
@@ -24,8 +127,9 @@
       <a class="btn sm ghost" href="#contact" id="toContact" aria-label="Contact the maker"><span class="lg">Contact the maker</span><span class="st">Contact</span></a>
       <a class="btn sm" href="#play">Open the app</a>
     </div>
-  </nav>
+  </header>
 
+  <main>
   <section class="hero">
     <div>
       <span class="tag">A toy for making tunes</span>
@@ -35,6 +139,7 @@
         <a class="btn" href="#play">Start doodling</a>
         <button class="btn ghost" id="toGuide">What do the buttons do?</button>
       </div>
+      <p class="what">Loop Doodle is a free, open source browser toy that turns your drawings into looping music. There is no sign-up and nothing to install, and it works on phones, tablets and computers.</p>
     </div>
     <div class="demo">
       <span class="sticker s1">Draw on me</span>
@@ -92,7 +197,16 @@
     <svg class="bd" style="--c: var(--bass); left: 3%; animation-delay: -1.5s" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 34c10-2 18-10 16-18s-12-4-8 6 18 14 32 6"/></svg>
     <h2 class="h2">What every button does.</h2>
     <p class="sub">You can ignore all of it and just draw. But if you are curious, here is the whole control panel.</p>
-    <div class="guide" id="guideCards"></div>
+    <div class="guide" id="guideCards">
+      <article class="gc" style="--c: var(--fg); --rot: -1.2deg"><h3>The pad</h3><p>Left to right is time: one trip across is two bars, then it loops. Up and down is pitch, so higher on the pad means a higher note. The faint blocks behind your line show the notes it turned into.</p></article>
+      <article class="gc" style="--c: var(--keys); --rot: .9deg"><h3>Sound</h3><p>Five colours, five instruments: Keys, Bass, Lead, Pad and Bells. Pick one, then draw. Put a few on the same pad and you have a band.</p></article>
+      <article class="gc" style="--c: var(--bells); --rot: -.6deg"><h3>Tools</h3><p>Draw adds lines. Erase removes any line you touch. Undo takes back the last thing, Clear wipes the pad, and Shuffle draws a random doodle for you.</p></article>
+      <article class="gc" style="--c: var(--accent); --rot: 1.3deg"><h3>Beat style</h3><p>The drums under your doodle: Lo-fi, Boom bap, House, Techno, Trap, DnB or Dembow. Same drawing, completely different mood. Each style brings its usual tempo. No beat leaves just your lines.</p></article>
+      <article class="gc" style="--c: var(--bass); --rot: -1.2deg"><h3>Tempo</h3><p>How fast the loop runs, in beats per minute. 70 to 90 is sleepy, 120 to 135 is dancey, 170 is chaos.</p></article>
+      <article class="gc" style="--c: var(--pad); --rot: .9deg"><h3>Beat level</h3><p>How loud the drums are next to your doodle. Slide it down to hear the melody, up to make it thump.</p></article>
+      <article class="gc" style="--c: var(--lead); --rot: -.6deg"><h3>Key and scale</h3><p>The set of notes your lines snap to, which is why nothing sounds wrong. Scale sets the mood: minor is moody, major is sunny, Blues and Japanese have their own flavour. Key shifts everything higher or lower.</p></article>
+      <article class="gc" style="--c: var(--keys); --rot: 1.3deg"><h3>Clean space</h3><p>Wipes the pad and goes full screen with only the colours and a few buttons. Undo brings the old drawing back. Best on a phone.</p></article>
+    </div>
   </section>
 
   <section>
@@ -101,6 +215,20 @@
     <h2 class="h2" style="margin-top: 16px">Free to play. Free to take apart.</h2>
     <p class="sub">Loop Doodle is an open source project. All of the code is public under the MIT licence, so you can read it, fork it, break it and build your own version.</p>
     <a class="btn ghost" href="https://github.com/RekaWeb3Design/loop-doodle" target="_blank" rel="noopener">See the code on GitHub</a>
+  </section>
+
+  <section class="faq" id="faq">
+    <h2 class="h2">Questions people ask.</h2>
+    <p class="sub">Short answers, straight from the person who built it.</p>
+    <div class="list">
+      <details open><summary>What is Loop Doodle?</summary><p>Loop Doodle is a free, open source browser toy that turns your drawings into looping music. You draw a line on the pad, it becomes a melody, and a beat plays underneath. I made it for fun.</p></details>
+      <details><summary>Is it free?</summary><p>Yes. It costs nothing, there are no ads and you never have to sign up.</p></details>
+      <details><summary>Do I need to know anything about music?</summary><p>No. Every line you draw snaps to a scale, so the notes always fit together. Left to right is time, and higher up on the pad is a higher note. That is all there is to know.</p></details>
+      <details><summary>Does it work on my phone?</summary><p>Yes. It runs in the browser on phones, tablets and computers, and on a touch screen you draw with your finger. It needs JavaScript and a modern browser. If you hear nothing, check that your phone is not on silent.</p></details>
+      <details><summary>Is my drawing uploaded anywhere?</summary><p>No. The sound is made live in your browser, and your drawing and settings are saved only in your browser's local storage, so they never leave your device. There are no accounts, no cookies and no analytics.</p></details>
+      <details><summary>Can I use the code?</summary><p>Yes. The code is open source under the MIT licence, so you can read it, fork it and build your own version, as long as you keep the copyright and licence notice. You can find <a href="https://github.com/RekaWeb3Design/loop-doodle" target="_blank" rel="noopener">the Loop Doodle code on GitHub</a>. The Loop Doodle name and logo are not covered by the licence.</p></details>
+      <details><summary>Who made it?</summary><p>I did. I am Réka Víg, the founder of The WOW Studio, and I built Loop Doodle for fun.</p></details>
+    </div>
   </section>
 
   <section class="talk" id="contact">
@@ -123,121 +251,16 @@
     <h2 class="mega">Now go <span class="a">scribble.</span></h2>
     <a class="btn" href="#play">Open Loop Doodle</a>
     <p class="fine">The sound is made live in your browser, nothing is recorded or uploaded. On an iPhone, flip the silent switch off or you will hear nothing.</p>
-    <p class="flinks"><span>&copy; 2026 Víg Réka</span><a href="#legal">Privacy and terms</a><a href="#legal">Adatkezelés és feltételek</a><a href="https://github.com/RekaWeb3Design/loop-doodle" target="_blank" rel="noopener">GitHub</a></p>
   </section>
-</div>
+  </main>
 
-<!-- ================= LEGAL ================= -->
-<div class="legalv">
-  <nav class="nav">
-    <a class="brand" href="#home">
-      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#231d45"/><path pathLength="1" d="M6 21c3-10 6-10 8-3s5 7 7 0 4-8 7-3" fill="none" stroke="#ffd84d" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="9" r="2.5" fill="#a8ff3e"/></svg>
-      <b>Loop<span>Doodle</span></b>
-    </a>
-    <a class="btn sm" href="#play">Open the app</a>
-  </nav>
-  <div class="langs">
-    <button class="pill" id="lgEn" aria-pressed="true">English</button>
-    <button class="pill" id="lgHu" aria-pressed="false">Magyar</button>
-  </div>
-
-  <article id="legalEn" lang="en">
-    <h1>Privacy and terms</h1>
-    <p class="when">Last updated: 12 November 2026</p>
-    <div class="short"><p><strong>The short version:</strong> Loop Doodle has no accounts, no cookies, no analytics and no ads. Your doodles stay in your own browser and we never see them.</p></div>
-
-    <h2>Who runs this site</h2>
-    <p>Víg Réka e.v. (sole proprietor). Víg Réka is the founder of The WOW Studio. For anything about this site or your data, write to <span class="sel">hello@rekavig.com</span>.</p>
-    <ul>
-      <li>Registered seat: 8415 Nagyesztergár, Radnóti Miklós utca 126., Hungary</li>
-      <li>Registration number: 61843705</li>
-      <li>Tax number: 91759830-2-39</li>
-      <li>EU VAT number: HU91759830</li>
-    </ul>
-
-    <h2>Privacy</h2>
-    <h3>Your doodles and settings</h3>
-    <p>Your drawing and your settings (sound, beat style, tempo, key and scale) are saved in your browser's local storage, so they are still there the next time you open the page. They never leave your device and we cannot see them. To remove them, press Clear in the app or clear this site's data in your browser settings.</p>
-    <h3>Technical data when the page loads</h3>
-    <p>The site is hosted by Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA). To deliver the page and keep it secure, Cloudflare processes your IP address and basic request details such as the time of the request and your browser type. The legal basis is our legitimate interest in running a working, secure website (GDPR Article 6(1)(f)). Cloudflare acts as our data processor and may process this data outside the European Economic Area under the safeguards set out in its Data Processing Addendum. We keep no logs of our own.</p>
-    <h3>If you contact us</h3>
-    <p>The start page has plain links for writing to us by email or WhatsApp. If you do, we use what you send (your name, your contact details and the content of your message) only to reply and, if you ask for one, to prepare an offer. The legal basis is taking steps at your request before entering into a contract (GDPR Article 6(1)(b)); for any other message it is our legitimate interest in answering it (Article 6(1)(f)).</p>
-    <p>WhatsApp is operated by Meta, and its own terms and privacy policy apply to what you send there. Because these are plain links, nothing is loaded from Meta until you click one. We keep messages only as long as the conversation needs and delete them if you ask.</p>
-    <h3>What we do not do</h3>
-    <ul>
-      <li>No cookies, no tracking, no analytics, no advertising.</li>
-      <li>No accounts, sign-ups or forms.</li>
-      <li>No microphone or camera access. All sound is generated on your device.</li>
-      <li>No third-party fonts, scripts, chat widgets or embeds. Everything loads from this site.</li>
-    </ul>
-    <h3>Your rights</h3>
-    <p>Under the GDPR you can ask for access to your personal data, for it to be corrected, erased or restricted, and you can object to its processing. Write to the address above. Because the site itself keeps nothing that identifies you, there will usually be nothing for us to look up unless you have written to us. You can also complain to the Hungarian data protection authority: Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH), 1055 Budapest, Falk Miksa utca 9-11., naih.hu.</p>
-    <h3>Children</h3>
-    <p>The site itself collects nothing from anyone, so it is fine to use at any age.</p>
-
-    <h2>Terms of use</h2>
-    <ul>
-      <li>Loop Doodle is a free toy, made for fun and offered as it is. We do not promise it will always be available or free of bugs.</li>
-      <li>Sound can be loud. Start with your volume low, especially on headphones.</li>
-      <li>Whatever you draw is yours.</li>
-      <li>The code is open source under the MIT licence and lives at github.com/RekaWeb3Design/loop-doodle. The Loop Doodle name and logo stay with the operator.</li>
-      <li>Nothing here limits rights you have under mandatory consumer protection law. Hungarian law applies.</li>
-    </ul>
-
-    <h2>Credits</h2>
-    <p>Typefaces: Unbounded, Space Grotesk and JetBrains Mono, each used under the SIL Open Font License 1.1. The licence texts are published with the site in the fonts folder.</p>
-  </article>
-
-  <article id="legalHu" lang="hu" hidden>
-    <h1>Adatkezelés és feltételek</h1>
-    <p class="when">Utolsó frissítés: 2026. november 12.</p>
-    <div class="short"><p><strong>Röviden:</strong> a Loop Doodle-ben nincs fiók, nincs süti, nincs analitika és nincs hirdetés. A rajzaid a saját böngésződben maradnak, mi nem látjuk őket.</p></div>
-
-    <h2>Ki üzemelteti az oldalt</h2>
-    <p>Víg Réka e.v. (egyéni vállalkozó). Víg Réka a The WOW Studio alapítója. Az oldallal vagy az adataiddal kapcsolatban itt érsz el: <span class="sel">hello@rekavig.com</span>.</p>
-    <ul>
-      <li>Székhely: 8415 Nagyesztergár, Radnóti Miklós utca 126.</li>
-      <li>Nyilvántartási szám: 61843705</li>
-      <li>Adószám: 91759830-2-39</li>
-      <li>Közösségi adószám: HU91759830</li>
-    </ul>
-
-    <h2>Adatkezelés</h2>
-    <h3>A rajzaid és a beállításaid</h3>
-    <p>A rajzodat és a beállításaidat (hangszín, beat stílus, tempó, hangnem és skála) a böngésződ helyi tárolója őrzi meg, hogy a következő megnyitáskor is meglegyenek. Ezek nem hagyják el az eszközödet, mi nem férünk hozzájuk. Törölni az appban a Clear gombbal tudod, vagy a böngésző beállításaiban az oldal adatainak törlésével.</p>
-    <h3>Technikai adatok az oldal betöltésekor</h3>
-    <p>Az oldal tárhelyszolgáltatója a Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA). Az oldal kiszolgálásához és védelméhez a Cloudflare kezeli az IP-címedet és a kérés alapadatait, például az időpontját és a böngésződ típusát. Az adatkezelés jogalapja a működő, biztonságos weboldal üzemeltetéséhez fűződő jogos érdekünk (GDPR 6. cikk (1) bekezdés f) pont). A Cloudflare adatfeldolgozóként jár el, és az adatokat az Európai Gazdasági Térségen kívül is kezelheti az adatfeldolgozási megállapodásában (Data Processing Addendum) rögzített garanciák mellett. Saját naplót nem vezetünk.</p>
-    <h3>Ha írsz nekünk</h3>
-    <p>A nyitóoldalon egyszerű linkeket találsz, amelyeken e-mailben vagy WhatsAppon írhatsz nekünk. Ha írsz, az elküldött adatokat (a nevedet, az elérhetőségedet és az üzeneted tartalmát) kizárólag arra használjuk, hogy válaszoljunk, és ha kéred, ajánlatot készítsünk. Az adatkezelés jogalapja a szerződéskötést megelőzően, a kérésedre megtett lépések (GDPR 6. cikk (1) bekezdés b) pont), minden más üzenetnél a megválaszolásához fűződő jogos érdekünk (6. cikk (1) bekezdés f) pont).</p>
-    <p>A WhatsAppot a Meta üzemelteti, az ott küldött üzenetekre a saját feltételei és adatkezelési szabályai vonatkoznak. Mivel ezek egyszerű linkek, semmi nem töltődik be a Metától, amíg rá nem kattintasz valamelyikre. Az üzeneteket csak addig őrizzük meg, ameddig a beszélgetéshez szükséges, és kérésre töröljük.</p>
-    <h3>Amit nem csinálunk</h3>
-    <ul>
-      <li>Nincs süti, követés, analitika és hirdetés.</li>
-      <li>Nincs fiók, regisztráció és űrlap.</li>
-      <li>Nem kérünk hozzáférést a mikrofonhoz vagy a kamerához. Minden hang a te eszközödön keletkezik.</li>
-      <li>Nincs külső betűtípus, szkript, csevegőablak vagy beágyazás. Minden erről az oldalról töltődik be.</li>
-    </ul>
-    <h3>A jogaid</h3>
-    <p>A GDPR alapján kérheted a személyes adataidhoz való hozzáférést, azok helyesbítését, törlését vagy kezelésének korlátozását, és tiltakozhatsz az adatkezelés ellen. Ehhez írj a fenti címre. Mivel maga az oldal semmit nem tárol, ami téged azonosítana, általában nem lesz mit kikeresnünk, hacsak nem írtál nekünk. Panasszal a Nemzeti Adatvédelmi és Információszabadság Hatósághoz (NAIH) fordulhatsz: 1055 Budapest, Falk Miksa utca 9-11., naih.hu.</p>
-    <h3>Gyerekek</h3>
-    <p>Maga az oldal senkitől nem gyűjt adatot, ezért bármilyen életkorban használható.</p>
-
-    <h2>Felhasználási feltételek</h2>
-    <ul>
-      <li>A Loop Doodle ingyenes játék, szórakozásból készült, és úgy használható, ahogy van. Nem vállalunk garanciát arra, hogy mindig elérhető és hibátlan lesz.</li>
-      <li>A hang hangos lehet. Halk hangerővel kezdj, főleg fejhallgatóval.</li>
-      <li>Amit rajzolsz, az a tiéd.</li>
-      <li>A kód nyílt forráskódú, MIT licenc alatt érhető el itt: github.com/RekaWeb3Design/loop-doodle. A Loop Doodle név és logó az üzemeltetőé marad.</li>
-      <li>Az itt leírtak nem korlátozzák a kötelező fogyasztóvédelmi szabályok szerinti jogaidat. A magyar jog az irányadó.</li>
-    </ul>
-
-    <h2>Köszönet</h2>
-    <p>Betűtípusok: Unbounded, Space Grotesk és JetBrains Mono, mindegyik a SIL Open Font License 1.1 alapján. A licencszövegek az oldallal együtt, a fonts mappában érhetők el.</p>
-  </article>
+  <footer>
+    <p class="flinks"><span>&copy; 2026 Víg Réka</span><a href="/privacy">Privacy and terms</a><a href="/privacy#hu" lang="hu" hreflang="hu">Adatkezelés és feltételek</a><a href="https://github.com/RekaWeb3Design/loop-doodle" target="_blank" rel="noopener">Loop Doodle on GitHub</a></p>
+  </footer>
 </div>
 
 <!-- ================= APP ================= -->
-<div class="app">
+<div class="app" hidden>
   <header class="top">
     <a class="brand" href="#home" aria-label="Loop Doodle, back to the start page">
       <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#231d45"/><path pathLength="1" d="M6 21c3-10 6-10 8-3s5 7 7 0 4-8 7-3" fill="none" stroke="#ffd84d" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="9" r="2.5" fill="#a8ff3e"/></svg>
@@ -303,7 +326,7 @@
         <select id="scale"></select>
       </div>
     </div>
-    <p class="foot">Every line snaps to the scale, so nothing sounds wrong. Not sure what something does? Tap the <kbd>?</kbd> at the top. <kbd>Space</kbd> plays and stops. <a href="#legal">Privacy and terms</a></p>
+    <p class="foot">Every line snaps to the scale, so nothing sounds wrong. Not sure what something does? Tap the <kbd>?</kbd> at the top. <kbd>Space</kbd> plays and stops. <a href="/privacy">Privacy and terms</a></p>
   </aside>
 </div>
 
@@ -317,6 +340,6 @@
     <button class="btn sm" id="sheetOk">Got it, let me draw</button>
   </div>
 </div>
-<script src="app.js?v=bcc672a" defer></script>
+<script src="/app.js?v=dev" defer></script>
 </body>
 </html>

@@ -96,8 +96,11 @@ body:not(.play) .app, body:not(.land) .landing, body:not(.legal) .legalv { displ
 /* legal view */
 .legalv { max-width: 720px; margin-inline: auto; padding-bottom: 48px; }
 .legalv .nav { margin-bottom: 36px; }
+.legalv h1 span { display: block; }
+.legalv #legalEn:not([hidden]) + #legalHu { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--line); }
+.legalv footer { margin-top: 48px; }
 .legalv .langs { display: flex; gap: 8px; margin-bottom: 26px; }
-.legalv h1 { font-family: var(--f-display); font-weight: 800; font-size: clamp(28px, 6vw, 42px); letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 8px; }
+.legalv h1 { font-family: var(--f-display); font-weight: 800; font-size: clamp(28px, 6vw, 42px); letter-spacing: -0.03em; line-height: 1.05; margin: 0 0 20px; }
 .legalv h2 { font-family: var(--f-display); font-weight: 800; font-size: 18px; letter-spacing: -0.01em; margin: 34px 0 10px; color: var(--accent); }
 .legalv h3 { font-size: 16px; margin: 20px 0 6px; }
 .legalv p, .legalv li { font-size: 16px; line-height: 1.6; color: #d9d3f2; margin: 0 0 12px; }
@@ -148,7 +151,9 @@ a { color: inherit; }
   background: var(--bg); background: color-mix(in srgb, var(--bg) 88%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
   border: 1px solid var(--line); border-top: 0; border-radius: 0 0 18px 18px;
 }
-.landing > section { position: relative; scroll-margin-top: 92px; }
+.landing > main { display: flex; flex-direction: column; gap: var(--gap); min-width: 0; }
+.landing > main > section { position: relative; scroll-margin-top: 92px; }
+.landing > footer { margin-top: calc(var(--gap) * -1 + 22px); }
 @media (max-width: 699px) {
   .landing > .nav { padding-inline: 9px; gap: 6px; }
   .landing > .nav .brand { gap: 6px; }
@@ -176,6 +181,7 @@ a { color: inherit; }
 .mega .b { color: var(--keys); display: inline-block; transform: rotate(-3deg); cursor: default; }
 .lede { font-size: clamp(16px, 2.2vw, 19px); line-height: 1.5; color: var(--fg); max-width: 34em; margin: 0 0 26px; }
 .cta { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.what { margin: 24px 0 0; max-width: 36em; font-size: 14.5px; line-height: 1.5; color: var(--muted); }
 
 .demo { position: relative; min-width: 0; }
 .mini { position: relative; aspect-ratio: 16 / 11; max-width: 100%; background: linear-gradient(180deg, #151130, #110e25); border: 2px solid var(--fg); border-radius: 22px; overflow: hidden; box-shadow: 8px 8px 0 var(--sh, var(--pad)); transition: box-shadow .18s; }
@@ -205,7 +211,8 @@ a { color: inherit; }
 .groove { display: grid; gap: 30px; align-items: center; }
 .pills { display: flex; flex-wrap: wrap; gap: 8px; }
 .pill { background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 10px 15px; font-weight: 700; font-size: 13.5px; min-height: 42px; transition: background .12s, border-color .12s, transform .12s; }
-.pill[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+a.pill { display: inline-flex; align-items: center; text-decoration: none; }
+.pill[aria-pressed="true"], .pill[aria-current="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 .pills.bt .pill[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
 .plab { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 18px 0 8px; }
 
@@ -216,6 +223,16 @@ a { color: inherit; }
 .end { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 22px; }
 .end .mega { margin: 0; }
 .fine { color: var(--muted); font-size: 13px; line-height: 1.5; max-width: 44em; margin: 0; }
+
+.faq .list { display: grid; gap: 12px; max-width: 820px; }
+.faq details { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 0 18px; transition: border-color .15s; }
+.faq details[open] { border-color: var(--muted); }
+.faq summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 16px 0; cursor: pointer; list-style: none; border-radius: 10px; font-family: var(--f-display); font-weight: 800; font-size: 15.5px; line-height: 1.25; letter-spacing: -0.01em; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; flex: none; width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--on-accent); font-size: 16px; line-height: 1; }
+.faq details[open] summary::after { content: "\2212"; }
+.faq details p { margin: 0 0 18px; max-width: 44em; font-size: 16px; line-height: 1.55; color: var(--fg); }
+.faq a { text-underline-offset: 3px; }
 
 .talk { background: var(--panel); border: 2px solid var(--fg); border-radius: 22px; padding: clamp(22px, 5vw, 44px); margin-right: 8px; box-shadow: 8px 8px 0 var(--lead); }
 .talk .h2 { margin-top: 16px; }
@@ -364,7 +381,9 @@ body.play .totop { display: none; }
   .gc:hover { box-shadow: 10px 10px 0 rgba(0,0,0,.6); }
   .mini:hover { box-shadow: 14px 14px 0 var(--sh, var(--pad)); }
   .totop:hover { background: var(--pad); color: var(--ink); box-shadow: 6px 6px 0 var(--fg); }
-  .pill:hover:not([aria-pressed="true"]), .chip:hover:not([aria-pressed="true"]), .tool:hover:not([aria-pressed="true"]):not(:disabled), .beat:hover:not([aria-pressed="true"]) { background: var(--panel-2); border-color: var(--fg); }
+  .faq details:hover { border-color: var(--fg); }
+  .faq a:hover { text-decoration-thickness: 3px; }
+  .pill:hover:not([aria-pressed="true"]):not([aria-current="true"]), .chip:hover:not([aria-pressed="true"]), .tool:hover:not([aria-pressed="true"]):not(:disabled), .beat:hover:not([aria-pressed="true"]) { background: var(--panel-2); border-color: var(--fg); }
   .help:hover, .float:hover { border-color: var(--muted); }
   .cb:hover:not([aria-pressed="true"]):not(:disabled) { background: var(--line); }
   .dot:hover { opacity: 1; }
@@ -379,7 +398,7 @@ body.play .totop { display: none; }
   .demo:hover .sticker.s2 { rotate: 11deg; scale: 1.08; }
   .mega .b:hover { animation: wig .5s ease-in-out; }
   .brand:hover path { stroke-dasharray: 1; animation: draw .6s ease-out; }
-  .pill:hover:not([aria-pressed="true"]) { transform: translateY(-2px); }
+  .pill:hover:not([aria-pressed="true"]):not([aria-current="true"]) { transform: translateY(-2px); }
 }
 @media (prefers-reduced-motion: no-preference) {
   .landing .btn:active { transform: translateY(4px) scale(.97, .92); }

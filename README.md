@@ -22,10 +22,15 @@ Connect this repo in Cloudflare Pages with **no build command** and **`public`**
 
 | File | What it is |
 | --- | --- |
-| `public/index.html` | Landing page, the app and the privacy/terms view (switched by `#play` and `#legal`) |
+| `public/index.html` | Landing page and the app (switched by `#play`), with the meta tags and JSON-LD |
+| `public/privacy.html` | Privacy notice and terms, English and Hungarian, served at `/privacy` (`#legal` redirects here) |
+| `public/privacy.js` | Language switch and back-to-top for the privacy page |
 | `public/app.js` | Everything: drawing, note snapping, synths, drums, transport |
 | `public/styles.css` | Styles and the self-hosted font faces |
 | `public/fonts/` | Unbounded, Space Grotesk, JetBrains Mono and their licences |
+| `public/robots.txt`, `sitemap.xml`, `llms.txt` | Crawler files: everything is allowed, plus a plain-text summary for AI answer engines |
+| `public/og.png`, `apple-touch-icon.png` | Share image and touch icon |
+| `public/_headers` | Security headers and long-lived caching for the version-stamped files |
 
 ## Privacy
 
@@ -33,7 +38,7 @@ No accounts, cookies, analytics or third-party requests. The doodle and settings
 
 The landing page has plain contact links (email and WhatsApp). There are no widgets, SDKs or embeds, so nothing is loaded from Meta unless a visitor clicks the WhatsApp link. Messages are used only to reply and, on request, to prepare an offer, and are deleted on request.
 
-See the Privacy and terms view in the app.
+See the [privacy and terms page](https://loopdoodle.rekavig.com/privacy).
 
 ## Licence
 
