@@ -29,7 +29,11 @@ Connect this repo in Cloudflare Pages with **no build command** and **`public`**
 
 ## Privacy
 
-No accounts, cookies, analytics or third-party requests. The doodle and settings are kept in the browser's local storage only. See the Privacy and terms view in the app.
+No accounts, cookies, analytics or third-party requests. The doodle and settings are kept in the browser's local storage only.
+
+The landing page has plain contact links (email and WhatsApp). There are no widgets, SDKs or embeds, so nothing is loaded from Meta unless a visitor clicks the WhatsApp link. Messages are used only to reply and, on request, to prepare an offer, and are deleted on request.
+
+See the Privacy and terms view in the app.
 
 ## Licence
 

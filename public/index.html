@@ -17,7 +17,7 @@
 <div class="landing">
   <nav class="nav">
     <a class="brand" href="#home">
-      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#231d45"/><path d="M6 21c3-10 6-10 8-3s5 7 7 0 4-8 7-3" fill="none" stroke="#ffd84d" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="9" r="2.5" fill="#a8ff3e"/></svg>
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#231d45"/><path pathLength="1" d="M6 21c3-10 6-10 8-3s5 7 7 0 4-8 7-3" fill="none" stroke="#ffd84d" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="9" r="2.5" fill="#a8ff3e"/></svg>
       <b>Loop<span>Doodle</span></b>
     </a>
     <a class="btn sm" href="#play">Open the app</a>
@@ -73,7 +73,7 @@
       <div class="pills bt" id="beatPills"></div>
     </div>
     <div class="demo">
-      <div class="mini" style="box-shadow: 8px 8px 0 var(--bass)"><canvas id="groovePad" aria-label="Demo pad with a ready-made drawing."></canvas></div>
+      <div class="mini" style="--sh: var(--bass)"><canvas id="groovePad" aria-label="Demo pad with a ready-made drawing."></canvas></div>
       <div class="mbar">
         <button class="btn sm white" id="groovePlay" aria-pressed="false"><span class="ico"></span><span>Play</span></button>
         <span class="sp"></span>
@@ -95,6 +95,18 @@
     <a class="btn ghost" href="https://github.com/RekaWeb3Design/loop-doodle" target="_blank" rel="noopener">See the code on GitHub</a>
   </section>
 
+  <section class="talk" id="contact">
+    <span class="tag" style="background: var(--keys)">Made by a person</span>
+    <h2 class="h2">Want one of these for your brand?</h2>
+    <p class="sub">Hi, I am Réka, the founder of The WOW Studio. I built Loop Doodle for fun.</p>
+    <p class="sub">If you want something playful and interactive like this for your brand or product, message me.</p>
+    <div class="cta">
+      <a class="btn" href="https://wa.me/36302321508?text=Hi%20R%C3%A9ka%2C%20I%20saw%20Loop%20Doodle%20and%20would%20like%20something%20like%20it%20for%20my%20brand." target="_blank" rel="noopener">WhatsApp me</a>
+      <a class="btn ghost" href="mailto:hello@rekavig.com">Email me</a>
+    </div>
+    <p class="cap">Or copy the address: <span class="sel">hello@rekavig.com</span></p>
+  </section>
+
   <section class="end">
     <h2 class="mega">Now go <span class="a">scribble.</span></h2>
     <a class="btn" href="#play">Open Loop Doodle</a>
@@ -107,7 +119,7 @@
 <div class="legalv">
   <nav class="nav">
     <a class="brand" href="#home">
-      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#231d45"/><path d="M6 21c3-10 6-10 8-3s5 7 7 0 4-8 7-3" fill="none" stroke="#ffd84d" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="9" r="2.5" fill="#a8ff3e"/></svg>
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#231d45"/><path pathLength="1" d="M6 21c3-10 6-10 8-3s5 7 7 0 4-8 7-3" fill="none" stroke="#ffd84d" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="9" r="2.5" fill="#a8ff3e"/></svg>
       <b>Loop<span>Doodle</span></b>
     </a>
     <a class="btn sm" href="#play">Open the app</a>
@@ -123,24 +135,33 @@
     <div class="short"><p><strong>The short version:</strong> Loop Doodle has no accounts, no cookies, no analytics and no ads. Your doodles stay in your own browser and we never see them.</p></div>
 
     <h2>Who runs this site</h2>
-    <p>Víg Réka e.v. (sole proprietor), Budapest, Hungary. For anything about this site or your data, write to <span class="sel">hello@rekavig.com</span>.</p>
+    <p>Víg Réka e.v. (sole proprietor). Víg Réka is the founder of The WOW Studio. For anything about this site or your data, write to <span class="sel">hello@rekavig.com</span>.</p>
+    <ul>
+      <li>Registered seat: 8415 Nagyesztergár, Radnóti Miklós utca 126., Hungary</li>
+      <li>Registration number: 61843705</li>
+      <li>Tax number: 91759830-2-39</li>
+      <li>EU VAT number: HU91759830</li>
+    </ul>
 
     <h2>Privacy</h2>
     <h3>Your doodles and settings</h3>
     <p>Your drawing and your settings (sound, beat style, tempo, key and scale) are saved in your browser's local storage, so they are still there the next time you open the page. They never leave your device and we cannot see them. To remove them, press Clear in the app or clear this site's data in your browser settings.</p>
     <h3>Technical data when the page loads</h3>
     <p>The site is hosted by Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA). To deliver the page and keep it secure, Cloudflare processes your IP address and basic request details such as the time of the request and your browser type. The legal basis is our legitimate interest in running a working, secure website (GDPR Article 6(1)(f)). Cloudflare acts as our data processor and may process this data outside the European Economic Area under the safeguards set out in its Data Processing Addendum. We keep no logs of our own.</p>
+    <h3>If you contact us</h3>
+    <p>The start page has plain links for writing to us by email or WhatsApp. If you do, we use what you send (your name, your contact details and the content of your message) only to reply and, if you ask for one, to prepare an offer. The legal basis is taking steps at your request before entering into a contract (GDPR Article 6(1)(b)); for any other message it is our legitimate interest in answering it (Article 6(1)(f)).</p>
+    <p>WhatsApp is operated by Meta, and its own terms and privacy policy apply to what you send there. Because these are plain links, nothing is loaded from Meta until you click one. We keep messages only as long as the conversation needs and delete them if you ask.</p>
     <h3>What we do not do</h3>
     <ul>
       <li>No cookies, no tracking, no analytics, no advertising.</li>
       <li>No accounts, sign-ups or forms.</li>
       <li>No microphone or camera access. All sound is generated on your device.</li>
-      <li>No third-party fonts or scripts. Everything loads from this site.</li>
+      <li>No third-party fonts, scripts, chat widgets or embeds. Everything loads from this site.</li>
     </ul>
     <h3>Your rights</h3>
-    <p>Under the GDPR you can ask for access to your personal data, for it to be corrected, erased or restricted, and you can object to its processing. Write to the address above. Because this site keeps nothing that identifies you, in most cases there will be nothing for us to look up. You can also complain to the Hungarian data protection authority: Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH), 1055 Budapest, Falk Miksa utca 9-11., naih.hu.</p>
+    <p>Under the GDPR you can ask for access to your personal data, for it to be corrected, erased or restricted, and you can object to its processing. Write to the address above. Because the site itself keeps nothing that identifies you, there will usually be nothing for us to look up unless you have written to us. You can also complain to the Hungarian data protection authority: Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH), 1055 Budapest, Falk Miksa utca 9-11., naih.hu.</p>
     <h3>Children</h3>
-    <p>The site collects nothing from anyone, so it is fine to use at any age.</p>
+    <p>The site itself collects nothing from anyone, so it is fine to use at any age.</p>
 
     <h2>Terms of use</h2>
     <ul>
@@ -161,24 +182,33 @@
     <div class="short"><p><strong>Röviden:</strong> a Loop Doodle-ben nincs fiók, nincs süti, nincs analitika és nincs hirdetés. A rajzaid a saját böngésződben maradnak, mi nem látjuk őket.</p></div>
 
     <h2>Ki üzemelteti az oldalt</h2>
-    <p>Víg Réka e.v. (egyéni vállalkozó), Budapest, Magyarország. Az oldallal vagy az adataiddal kapcsolatban itt érsz el: <span class="sel">hello@rekavig.com</span>.</p>
+    <p>Víg Réka e.v. (egyéni vállalkozó). Víg Réka a The WOW Studio alapítója. Az oldallal vagy az adataiddal kapcsolatban itt érsz el: <span class="sel">hello@rekavig.com</span>.</p>
+    <ul>
+      <li>Székhely: 8415 Nagyesztergár, Radnóti Miklós utca 126.</li>
+      <li>Nyilvántartási szám: 61843705</li>
+      <li>Adószám: 91759830-2-39</li>
+      <li>Közösségi adószám: HU91759830</li>
+    </ul>
 
     <h2>Adatkezelés</h2>
     <h3>A rajzaid és a beállításaid</h3>
     <p>A rajzodat és a beállításaidat (hangszín, beat stílus, tempó, hangnem és skála) a böngésződ helyi tárolója őrzi meg, hogy a következő megnyitáskor is meglegyenek. Ezek nem hagyják el az eszközödet, mi nem férünk hozzájuk. Törölni az appban a Clear gombbal tudod, vagy a böngésző beállításaiban az oldal adatainak törlésével.</p>
     <h3>Technikai adatok az oldal betöltésekor</h3>
     <p>Az oldal tárhelyszolgáltatója a Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA). Az oldal kiszolgálásához és védelméhez a Cloudflare kezeli az IP-címedet és a kérés alapadatait, például az időpontját és a böngésződ típusát. Az adatkezelés jogalapja a működő, biztonságos weboldal üzemeltetéséhez fűződő jogos érdekünk (GDPR 6. cikk (1) bekezdés f) pont). A Cloudflare adatfeldolgozóként jár el, és az adatokat az Európai Gazdasági Térségen kívül is kezelheti az adatfeldolgozási megállapodásában (Data Processing Addendum) rögzített garanciák mellett. Saját naplót nem vezetünk.</p>
+    <h3>Ha írsz nekünk</h3>
+    <p>A nyitóoldalon egyszerű linkeket találsz, amelyeken e-mailben vagy WhatsAppon írhatsz nekünk. Ha írsz, az elküldött adatokat (a nevedet, az elérhetőségedet és az üzeneted tartalmát) kizárólag arra használjuk, hogy válaszoljunk, és ha kéred, ajánlatot készítsünk. Az adatkezelés jogalapja a szerződéskötést megelőzően, a kérésedre megtett lépések (GDPR 6. cikk (1) bekezdés b) pont), minden más üzenetnél a megválaszolásához fűződő jogos érdekünk (6. cikk (1) bekezdés f) pont).</p>
+    <p>A WhatsAppot a Meta üzemelteti, az ott küldött üzenetekre a saját feltételei és adatkezelési szabályai vonatkoznak. Mivel ezek egyszerű linkek, semmi nem töltődik be a Metától, amíg rá nem kattintasz valamelyikre. Az üzeneteket csak addig őrizzük meg, ameddig a beszélgetéshez szükséges, és kérésre töröljük.</p>
     <h3>Amit nem csinálunk</h3>
     <ul>
       <li>Nincs süti, követés, analitika és hirdetés.</li>
       <li>Nincs fiók, regisztráció és űrlap.</li>
       <li>Nem kérünk hozzáférést a mikrofonhoz vagy a kamerához. Minden hang a te eszközödön keletkezik.</li>
-      <li>Nincs külső betűtípus vagy szkript. Minden erről az oldalról töltődik be.</li>
+      <li>Nincs külső betűtípus, szkript, csevegőablak vagy beágyazás. Minden erről az oldalról töltődik be.</li>
     </ul>
     <h3>A jogaid</h3>
-    <p>A GDPR alapján kérheted a személyes adataidhoz való hozzáférést, azok helyesbítését, törlését vagy kezelésének korlátozását, és tiltakozhatsz az adatkezelés ellen. Ehhez írj a fenti címre. Mivel az oldal semmit nem tárol, ami téged azonosítana, a legtöbb esetben nem lesz mit kikeresnünk. Panasszal a Nemzeti Adatvédelmi és Információszabadság Hatósághoz (NAIH) fordulhatsz: 1055 Budapest, Falk Miksa utca 9-11., naih.hu.</p>
+    <p>A GDPR alapján kérheted a személyes adataidhoz való hozzáférést, azok helyesbítését, törlését vagy kezelésének korlátozását, és tiltakozhatsz az adatkezelés ellen. Ehhez írj a fenti címre. Mivel maga az oldal semmit nem tárol, ami téged azonosítana, általában nem lesz mit kikeresnünk, hacsak nem írtál nekünk. Panasszal a Nemzeti Adatvédelmi és Információszabadság Hatósághoz (NAIH) fordulhatsz: 1055 Budapest, Falk Miksa utca 9-11., naih.hu.</p>
     <h3>Gyerekek</h3>
-    <p>Az oldal senkitől nem gyűjt adatot, ezért bármilyen életkorban használható.</p>
+    <p>Maga az oldal senkitől nem gyűjt adatot, ezért bármilyen életkorban használható.</p>
 
     <h2>Felhasználási feltételek</h2>
     <ul>
@@ -198,7 +228,7 @@
 <div class="app">
   <header class="top">
     <a class="brand" href="#home" aria-label="Loop Doodle, back to the start page">
-      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#231d45"/><path d="M6 21c3-10 6-10 8-3s5 7 7 0 4-8 7-3" fill="none" stroke="#ffd84d" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="9" r="2.5" fill="#a8ff3e"/></svg>
+      <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#231d45"/><path pathLength="1" d="M6 21c3-10 6-10 8-3s5 7 7 0 4-8 7-3" fill="none" stroke="#ffd84d" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="9" r="2.5" fill="#a8ff3e"/></svg>
       <b>Loop<span>Doodle</span></b>
     </a>
     <p class="hint">Draw a line and it becomes a melody. Left to right is time, higher on the pad is a higher note.</p>

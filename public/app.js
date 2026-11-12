@@ -621,6 +621,18 @@ const pillRow = (host, names, isOn, pick) => names.forEach((n) => {
 pillRow($('shapePills'), Object.keys(SHAPES).map((k) => ({label: k})), (n) => n.label === 'House', (n) => { GROOVE.strokes = SHAPES[n.label](); });
 pillRow($('beatPills'), BEATS.filter((b) => b.bpm).map((b) => ({label: b.name, b})), (n) => n.b.id === GROOVE.beat, (n) => { GROOVE.beat = n.b.id; GROOVE.bpm = n.b.bpm; });
 $('grooveOpen').onclick = () => openInApp(GROOVE);
+// scroll reveal: sections are hidden from here only, and shown again if the observer never reports
+if (!reduce && 'IntersectionObserver' in window) {
+  const secs = [...document.querySelectorAll('.landing > section:not(.hero)')];
+  const show = (el) => el.classList.add('in');
+  let seen = false;
+  const io = new IntersectionObserver((es) => {
+    seen = true;
+    es.forEach((e) => { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
+  }, {rootMargin: '0px 0px -8% 0px'});
+  secs.forEach((el) => { el.classList.add('rv'); io.observe(el); });
+  setTimeout(() => { if (!seen) { io.disconnect(); secs.forEach(show); } }, 1500);
+}
 
 /* ---------- views ---------- */
 let view = null;
