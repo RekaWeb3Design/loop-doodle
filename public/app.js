@@ -724,32 +724,6 @@ syncAll(); route(); frame();
       });
       el.addEventListener('pointerleave', () => { box = null; x = y = 0; anim(job); });
     });
-
-    // doodle trail: a short glowing line behind the cursor, cleared and idle once it has faded
-    const cv = document.createElement('canvas'); cv.className = 'trail'; cv.setAttribute('aria-hidden', 'true'); document.body.appendChild(cv);
-    const g = cv.getContext('2d'), pts = [], LIFE = 480; let dpr = 1;
-    const fit = () => {
-      dpr = Math.min(2, devicePixelRatio || 1);
-      cv.width = document.documentElement.clientWidth * dpr; cv.height = innerHeight * dpr;
-      g.lineCap = 'round'; g.shadowColor = COL.accent; g.shadowBlur = 12 * dpr;
-    };
-    fit(); addEventListener('resize', fit);
-    const trail = () => {
-      const now = performance.now();
-      if (view !== 'land') pts.length = 0;
-      while (pts.length && now - pts[0].t > LIFE) pts.shift();
-      g.clearRect(0, 0, cv.width, cv.height);
-      for (let i = 1; i < pts.length; i++) {
-        const a = 1 - (now - pts[i].t) / LIFE;
-        g.strokeStyle = alpha(COL.accent, a); g.lineWidth = (1.5 + 4 * a) * dpr;
-        g.beginPath(); g.moveTo(pts[i - 1].x * dpr, pts[i - 1].y * dpr); g.lineTo(pts[i].x * dpr, pts[i].y * dpr); g.stroke();
-      }
-      return pts.length > 0;
-    };
-    addEventListener('pointermove', (e) => {
-      if (view !== 'land' || e.pointerType === 'touch' || e.buttons) return;
-      pts.push({x: e.clientX, y: e.clientY, t: performance.now()}); anim(trail);
-    }, {passive: true});
   }
 }
 })();

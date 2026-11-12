@@ -316,7 +316,7 @@ body.clean .stage { position: fixed; inset: env(safe-area-inset-top, 0px) 0 env(
 }
 /* ================= hover and micro-interactions =================
    Rule of thumb: colour, shadow, outline and background feedback always applies.
-   Anything that moves (translate, rotate, scale, drawing, trails) only runs without prefers-reduced-motion. */
+   Anything that moves (translate, rotate, scale, drawing) only runs without prefers-reduced-motion. */
 @keyframes bob { 50% { translate: 0 -8px; } }
 @keyframes wob { 20% { transform: rotate(-16deg) scale(1.12); } 55% { transform: rotate(12deg) scale(1.12); } 80% { transform: rotate(-5deg); } }
 @keyframes wig { 0%, 100% { transform: rotate(-3deg); } 25% { transform: rotate(-11deg) scale(1.06); } 60% { transform: rotate(4deg) scale(1.06); } }
@@ -343,10 +343,6 @@ body.clean .stage { position: fixed; inset: env(safe-area-inset-top, 0px) 0 env(
 /* background doodles: they sit in the empty gap above their section, never over text */
 .bd { position: absolute; top: calc(var(--gap) / -2 - 22px); width: 44px; height: 44px; fill: none; stroke: var(--c); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; opacity: .85; animation: bob 7s ease-in-out infinite; }
 @media (max-width: 699px) { .bd { width: 32px; height: 32px; top: calc(var(--gap) / -2 - 12px); } .bd.w { display: none; } }
-
-/* cursor trail: one fixed canvas, landing only */
-.trail { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 30; }
-body:not(.land) .trail { display: none; }
 
 /* back to top */
 .totop {
