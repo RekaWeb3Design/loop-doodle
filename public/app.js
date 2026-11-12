@@ -621,18 +621,6 @@ const pillRow = (host, names, isOn, pick) => names.forEach((n) => {
 pillRow($('shapePills'), Object.keys(SHAPES).map((k) => ({label: k})), (n) => n.label === 'House', (n) => { GROOVE.strokes = SHAPES[n.label](); });
 pillRow($('beatPills'), BEATS.filter((b) => b.bpm).map((b) => ({label: b.name, b})), (n) => n.b.id === GROOVE.beat, (n) => { GROOVE.beat = n.b.id; GROOVE.bpm = n.b.bpm; });
 $('grooveOpen').onclick = () => openInApp(GROOVE);
-// scroll reveal: sections are hidden from here only, and shown again if the observer never reports
-if (!reduce && 'IntersectionObserver' in window) {
-  const secs = [...document.querySelectorAll('.landing > section:not(.hero)')];
-  const show = (el) => el.classList.add('in');
-  let seen = false;
-  const io = new IntersectionObserver((es) => {
-    seen = true;
-    es.forEach((e) => { if (e.isIntersecting) { show(e.target); io.unobserve(e.target); } });
-  }, {rootMargin: '0px 0px -8% 0px'});
-  secs.forEach((el) => { el.classList.add('rv'); io.observe(el); });
-  setTimeout(() => { if (!seen) { io.disconnect(); secs.forEach(show); } }, 1500);
-}
 
 /* ---------- views ---------- */
 let view = null;
@@ -653,4 +641,115 @@ setLang((navigator.language || '').toLowerCase().startsWith('hu'));
 
 if (!load()) S.strokes = seed();
 syncAll(); route(); frame();
+
+/* ---------- landing motion ---------- */
+// Everything here is decoration. Hidden-until-seen states are only ever set from this block,
+// movement is skipped under prefers-reduced-motion, and pointer effects need a fine pointer.
+{
+  const land = document.querySelector('.landing'), toTop = $('toTop');
+  const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const smooth = reduce ? 'auto' : 'smooth';
+  // one requestAnimationFrame queue: event handlers only store numbers, all style writes happen here
+  const jobs = new Set(); let raf = 0;
+  const run = () => { raf = 0; [...jobs].forEach((fn) => { if (!fn()) jobs.delete(fn); }); if (jobs.size && !raf) raf = requestAnimationFrame(run); };
+  const anim = (fn) => { jobs.add(fn); if (!raf) raf = requestAnimationFrame(run); };
+
+  $('toContact').onclick = (e) => { e.preventDefault(); $('contact').scrollIntoView({behavior: smooth}); };
+  toTop.onclick = () => scrollTo({top: 0, behavior: smooth});
+
+  // heading squiggles
+  land.querySelectorAll('.h2').forEach((h) => h.insertAdjacentHTML('beforeend', '<svg class="sq draw" width="180" height="14" viewBox="0 0 180 14" aria-hidden="true"><path pathLength="1" d="M3 8c9-8 15-8 22 0s14 8 22 0 14-8 22 0 14 8 22 0 14-8 22 0 14 8 22 0 14-8 22 0 12 7 17 2"/></svg>'));
+
+  // seen-once observer; if it never reports, everything it armed is released
+  if (!reduce && 'IntersectionObserver' in window) {
+    const todo = new Map(); let seen = false;
+    const io = new IntersectionObserver((es) => {
+      seen = true;
+      es.forEach((e) => { if (e.isIntersecting) { const fn = todo.get(e.target); todo.delete(e.target); io.unobserve(e.target); if (fn) fn(); } });
+    }, {rootMargin: '0px 0px -10% 0px'});
+    const arm = (el, pre, fn) => { el.classList.add(pre); todo.set(el, fn); io.observe(el); };
+    land.querySelectorAll(':scope > section:not(.hero)').forEach((el) => arm(el, 'rv', () => el.classList.add('in')));
+    land.querySelectorAll('.draw').forEach((el) => arm(el, 'pre', () => el.classList.add('in')));
+    land.querySelectorAll('.steps').forEach((el) => arm(el, 'pre', () => { el.classList.add('go'); setTimeout(() => el.classList.remove('pre', 'go'), 1400); }));
+    setTimeout(() => { if (!seen) { io.disconnect(); todo.forEach((fn) => fn()); todo.clear(); } }, 1500);
+  }
+
+  // scroll: back-to-top visibility and a small drift on the background doodles
+  const doodles = reduce ? [] : [...land.querySelectorAll('.bd')], drift = innerWidth < 700 ? 4 : 8;
+  const cards = [];
+  const onScroll = () => {
+    const y = scrollY;
+    toTop.classList.toggle('on', view !== 'play' && y > innerHeight * .9);
+    cards.forEach((c) => { c.box = null; });
+    if (view === 'land') doodles.forEach((d, i) => { d.style.transform = `translateY(${(Math.sin(y / 260 + i * 1.7) * drift).toFixed(1)}px) rotate(${(Math.sin(y / 340 + i) * 8).toFixed(1)}deg)`; });
+    return false;
+  };
+  addEventListener('scroll', () => anim(onScroll), {passive: true});
+  addEventListener('hashchange', () => anim(onScroll));
+  onScroll();
+
+  if (FINE && !reduce) {
+    // guide cards: pointer-tracked tilt that eases back on leave
+    land.querySelectorAll('.gc').forEach((el) => {
+      const c = {box: null, k: 0, rx: 0, ry: 0, tk: 0, tx: 0, ty: 0}, rot = parseFloat(el.style.getPropertyValue('--rot')) || 0;
+      cards.push(c);
+      const job = () => {
+        c.k += (c.tk - c.k) * .2; c.rx += (c.tx - c.rx) * .2; c.ry += (c.ty - c.ry) * .2;
+        const done = Math.abs(c.tk - c.k) < .003 && Math.abs(c.tx - c.rx) < .03 && Math.abs(c.ty - c.ry) < .03;
+        if (done && !c.tk) { c.k = c.rx = c.ry = 0; el.style.transform = ''; return false; }
+        el.style.transform = `perspective(700px) rotateX(${c.rx.toFixed(2)}deg) rotateY(${c.ry.toFixed(2)}deg) translateY(${(-8 * c.k).toFixed(2)}px) scale(${(1 + .03 * c.k).toFixed(4)}) rotate(${(rot * (1 - c.k)).toFixed(2)}deg)`;
+        return !done;
+      };
+      el.addEventListener('pointermove', (e) => {
+        if (e.pointerType === 'touch') return;
+        if (!c.box) c.box = el.getBoundingClientRect();
+        c.tk = 1;
+        c.ty = clamp((e.clientX - c.box.left) / c.box.width - .5, -.5, .5) * 16;
+        c.tx = clamp((e.clientY - c.box.top) / c.box.height - .5, -.5, .5) * -16;
+        anim(job);
+      });
+      el.addEventListener('pointerleave', () => { c.tk = c.tx = c.ty = 0; c.box = null; anim(job); });
+    });
+
+    // buttons: a small magnetic pull toward the cursor
+    land.querySelectorAll('.btn').forEach((el) => {
+      let box = null, x = 0, y = 0;
+      const job = () => { el.style.setProperty('--mx', x.toFixed(1) + 'px'); el.style.setProperty('--my', y.toFixed(1) + 'px'); return false; };
+      el.addEventListener('pointermove', (e) => {
+        if (e.pointerType === 'touch') return;
+        if (!box) box = el.getBoundingClientRect();
+        x = clamp((e.clientX - box.left - box.width / 2) * .3, -6, 6);
+        y = clamp((e.clientY - box.top - box.height / 2) * .3, -6, 6);
+        anim(job);
+      });
+      el.addEventListener('pointerleave', () => { box = null; x = y = 0; anim(job); });
+    });
+
+    // doodle trail: a short glowing line behind the cursor, cleared and idle once it has faded
+    const cv = document.createElement('canvas'); cv.className = 'trail'; cv.setAttribute('aria-hidden', 'true'); document.body.appendChild(cv);
+    const g = cv.getContext('2d'), pts = [], LIFE = 480; let dpr = 1;
+    const fit = () => {
+      dpr = Math.min(2, devicePixelRatio || 1);
+      cv.width = document.documentElement.clientWidth * dpr; cv.height = innerHeight * dpr;
+      g.lineCap = 'round'; g.shadowColor = COL.accent; g.shadowBlur = 12 * dpr;
+    };
+    fit(); addEventListener('resize', fit);
+    const trail = () => {
+      const now = performance.now();
+      if (view !== 'land') pts.length = 0;
+      while (pts.length && now - pts[0].t > LIFE) pts.shift();
+      g.clearRect(0, 0, cv.width, cv.height);
+      for (let i = 1; i < pts.length; i++) {
+        const a = 1 - (now - pts[i].t) / LIFE;
+        g.strokeStyle = alpha(COL.accent, a); g.lineWidth = (1.5 + 4 * a) * dpr;
+        g.beginPath(); g.moveTo(pts[i - 1].x * dpr, pts[i - 1].y * dpr); g.lineTo(pts[i].x * dpr, pts[i].y * dpr); g.stroke();
+      }
+      return pts.length > 0;
+    };
+    addEventListener('pointermove', (e) => {
+      if (view !== 'land' || e.pointerType === 'touch' || e.buttons) return;
+      pts.push({x: e.clientX, y: e.clientY, t: performance.now()}); anim(trail);
+    }, {passive: true});
+  }
+}
 })();

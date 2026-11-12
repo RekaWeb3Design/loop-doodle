@@ -10,17 +10,20 @@
 <meta property="og:description" content="Draw a squiggle, get a banger. Loop Doodle turns anything you draw into a looping tune over a beat. Free, open source, no sign-up.">
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=dev">
 </head>
 <body>
 <!-- ================= LANDING ================= -->
 <div class="landing">
   <nav class="nav">
-    <a class="brand" href="#home">
+    <a class="brand" href="#home" aria-label="Loop Doodle, start page">
       <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><rect width="34" height="34" rx="9" fill="#231d45"/><path pathLength="1" d="M6 21c3-10 6-10 8-3s5 7 7 0 4-8 7-3" fill="none" stroke="#ffd84d" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="9" r="2.5" fill="#a8ff3e"/></svg>
       <b>Loop<span>Doodle</span></b>
     </a>
-    <a class="btn sm" href="#play">Open the app</a>
+    <div class="navr">
+      <a class="btn sm ghost" href="#contact" id="toContact" aria-label="Contact the maker"><span class="lg">Contact the maker</span><span class="st">Contact</span></a>
+      <a class="btn sm" href="#play">Open the app</a>
+    </div>
   </nav>
 
   <section class="hero">
@@ -54,6 +57,7 @@
   </div></div>
 
   <section>
+    <svg class="bd" style="--c: var(--keys); right: 7%" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4l5 14 15 1-12 9 4 15-12-9-12 9 4-15-12-9 15-1z"/></svg>
     <h2 class="h2">Three steps. That is the whole manual.</h2>
     <p class="sub">You are not composing. You are doodling, and the pad does the music part.</p>
     <ol class="steps">
@@ -64,6 +68,8 @@
   </section>
 
   <section class="groove">
+    <svg class="bd w" style="--c: var(--lead); left: 44%; animation-delay: -3s" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 24c0-3 4-3 4 1s-6 6-9 1 2-13 9-11 10 10 6 17-14 9-20 3"/></svg>
+    <svg class="bd w" style="--c: var(--pad); right: 3%; animation-delay: -5s" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 30l8-12 8 12 8-12 8 12 8-12"/></svg>
     <div>
       <h2 class="h2">Same doodle, different groove.</h2>
       <p class="sub" style="margin-bottom: 0">Pick a drawing, then tap through the beat styles. The lines stay the same. Only the drums and the tempo change.</p>
@@ -83,12 +89,14 @@
   </section>
 
   <section id="guide">
+    <svg class="bd" style="--c: var(--bass); left: 3%; animation-delay: -1.5s" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 34c10-2 18-10 16-18s-12-4-8 6 18 14 32 6"/></svg>
     <h2 class="h2">What every button does.</h2>
     <p class="sub">You can ignore all of it and just draw. But if you are curious, here is the whole control panel.</p>
     <div class="guide" id="guideCards"></div>
   </section>
 
   <section>
+    <svg class="bd w" style="--c: var(--bells); right: 14%; animation-delay: -4s" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 7v34M7 24h34M12 12l24 24M36 12L12 36"/></svg>
     <span class="tag" style="background: var(--bells)">Open source</span>
     <h2 class="h2" style="margin-top: 16px">Free to play. Free to take apart.</h2>
     <p class="sub">Loop Doodle is an open source project. All of the code is public under the MIT licence, so you can read it, fork it, break it and build your own version.</p>
@@ -96,10 +104,12 @@
   </section>
 
   <section class="talk" id="contact">
+    <svg class="bd w" style="--c: var(--accent); left: 32%; animation-delay: -2.5s" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 24c5-10 9-10 13 0s9 10 13 0 9-10 14 0"/></svg>
     <span class="tag" style="background: var(--keys)">Made by a person</span>
-    <h2 class="h2">Want one of these for your brand?</h2>
-    <p class="sub">Hi, I am Réka, the founder of The WOW Studio. I built Loop Doodle for fun.</p>
-    <p class="sub">If you want something playful and interactive like this for your brand or product, message me.</p>
+    <h2 class="h2">Want a fun, custom way to get more customers?</h2>
+    <p class="sub">Send me your ideas and we'll make it work.</p>
+    <p class="sub">Hi, I am Réka, the founder of The WOW Studio. I built Loop Doodle for fun. If you want something playful and interactive like this for your brand or product, message me.</p>
+    <svg class="arw draw" viewBox="0 0 110 56" aria-hidden="true"><path pathLength="1" d="M104 6C84 0 62 6 58 20s10 20 18 12-4-20-20-15S32 30 30 50"/><path pathLength="1" d="M19 40l11 11 9-13"/></svg>
     <div class="cta">
       <a class="btn" href="https://wa.me/36302321508?text=Hi%20R%C3%A9ka%2C%20I%20saw%20Loop%20Doodle%20and%20would%20like%20something%20like%20it%20for%20my%20brand." target="_blank" rel="noopener">WhatsApp me</a>
       <a class="btn ghost" href="mailto:hello@rekavig.com">Email me</a>
@@ -108,6 +118,8 @@
   </section>
 
   <section class="end">
+    <svg class="bd" style="--c: var(--keys); left: 12%; animation-delay: -6s" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 8c-10 0-16 7-16 16s7 16 16 16 16-7 16-16S34 9 25 9"/></svg>
+    <svg class="bd w" style="--c: var(--lead); right: 10%; animation-delay: -3.5s" viewBox="0 0 48 48" aria-hidden="true"><path d="M4 30l8-12 8 12 8-12 8 12 8-12"/></svg>
     <h2 class="mega">Now go <span class="a">scribble.</span></h2>
     <a class="btn" href="#play">Open Loop Doodle</a>
     <p class="fine">The sound is made live in your browser, nothing is recorded or uploaded. On an iPhone, flip the silent switch off or you will hear nothing.</p>
@@ -295,6 +307,8 @@
   </aside>
 </div>
 
+<button class="totop" id="toTop" aria-label="Back to top">&#8593;</button>
+
 <div class="sheet" id="sheet" hidden>
   <div class="sheet-in" role="dialog" aria-labelledby="sheetT">
     <header><h2 id="sheetT">How Loop Doodle works</h2><button class="cb" id="sheetX" aria-label="Close">&#10005;</button></header>
@@ -303,6 +317,6 @@
     <button class="btn sm" id="sheetOk">Got it, let me draw</button>
   </div>
 </div>
-<script src="app.js" defer></script>
+<script src="app.js?v=dev" defer></script>
 </body>
 </html>
